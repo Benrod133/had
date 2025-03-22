@@ -1,6 +1,6 @@
 # Hádek Python Hra
 
-Vítejte ve **hře [Hádek](https://github.com/Benrod133/had)** od **[Benrod133](https://github.com/Benrod133/)**! _Tato tato hra slouží pouze pro účel zábavy._
+Vítejte ve **hře [Hádek](https://github.com/Benrod133/had)** od **[Benrod133](https://github.com/Benrod133/)**! _`Tato tato hra slouží pouze pro účel zábavy.`_
 
 ## Funkce
 
@@ -11,13 +11,13 @@ Vítejte ve **hře [Hádek](https://github.com/Benrod133/had)** od **[Benrod133]
 ## Požadavky
 
 - Python 3.8 nebo novější
-- Potřebné knihovny (nainstalujte pomocí `requirements.txt`)
+- Potřebné knihovny (nainstalujte pomocí `[requirements.txt](https://github.com/Benrod133/had/blob/main/requirements.txt)`)
 
 ## Instalace
 
 1. Naklonujte repozitář:
     ```bash
-    git clone https://github.com/Benrod133/had
+    git clone https://github.com/Benrod133/had.git
     ```
 2. Přejděte do složky projektu:
     ```bash
