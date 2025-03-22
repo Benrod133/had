@@ -125,13 +125,11 @@ def collided():
     global head
     global body_parts
 
-
     pygame.mixer.music.stop()
     winsound.PlaySound(COLLISION_SOUND, winsound.SND_ASYNC)  # Play collision sound
     sleep(2)
     head.goto(0, 0)
     head.direction = "stop"
-
 
     # Skryjeme části těla
     for one_body_part in body_parts:
@@ -140,6 +138,7 @@ def collided():
     # Vyprázdníme list s částmi těla    
     body_parts.clear()
     score = 0
+    actual_time = 0  # Reset času
 
     #nová pozice potravy
     apple_new_pos()
@@ -201,6 +200,10 @@ create_joystick()
 # bg music spuštění
 play_background_music()
 
+
+
+
+fps = 60
 #main cyklus
 while True:
     try:
@@ -208,7 +211,7 @@ while True:
         if score > best_score:
             best_score = score
         # kontrola kolize s okrajem okna
-        if head.xcor() > 290 or head.xcor() < -290 or head.ycor() > 290 or head.ycor() < - 290:
+        if head.xcor() > 275 or head.xcor() < -280 or head.ycor() > 280 or head.ycor() < - 230:
             collided()
         if head.distance(apple) < 20:
             winsound.PlaySound(EAT_SOUND, winsound.SND_ASYNC)  # Play eating sound
@@ -251,8 +254,12 @@ while True:
         score_print.clear()
         score_print.write(f"Skóre: {score}         nejlepší skóre: {best_score}", align="center", font=("Arial", 18))
 
+        #měření času
+        actual_time += 1 / fps  # Přesná akumulace času
+
+        # Zobrazení času zaokrouhleného na 1 desetinné místo
         time_text.clear()
-        time_text.write(f"Čas: {actual_time} s", align="center", font=("Arial", 18))
+        time_text.write(f"Čas: {round(actual_time, 1)} s", align="center", font=("Arial", 18))
 
         with open("nej_skore.txt", "w", encoding="utf-8") as file:
             file.write(str(best_score))
@@ -271,7 +278,7 @@ while True:
 
                 win_message.destroy()
                 score = 0
-                actual_time = 0
+                actual_time = 0  # Reset času
                 head.goto(0, 0)
                 head.direction = "stop"
                 for one_body_part in body_parts:
@@ -305,9 +312,6 @@ while True:
             fps = 20
         else:
             fps = 10
-        
-        #měření času
-        actual_time = round(actual_time + 1 / fps, 1)
         
         pygame.time.Clock().tick(fps)
     except tk.TclError:

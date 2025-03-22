@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.conf import settings
 import os
@@ -7,6 +8,8 @@ import logging
 
 # Create your views here.
 def index(request):
+    return redirect(reverse(games))
+def games(request):
     return render(request, 'games/index.html', {
         'games': [
             {
@@ -41,7 +44,8 @@ def had(request):
             return render(request, 'games/error.html', {'message': f'Soubor nenalezen: main.py ({had_path})'})
     else:
         return render(request, 'games/error.html', {'message': 'STATIC_ROOT není nastaven.'})
-    return index(request)
+    return redirect(reverse(games))
+
 
 
 

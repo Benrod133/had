@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block styles %}
+
+    <link rel="stylesheet" href="{% static 'games/index.css' %}">
+
+{% endblock styles %}
+
 {% block title %}Hry{% endblock title %}
 
 {% block content %}
