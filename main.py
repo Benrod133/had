@@ -1,4 +1,5 @@
 from turtle import *
+import pygame
 from time import *
 import random
 import tkinter as tk
@@ -16,6 +17,9 @@ score = 0
 EAT_SOUND = "sounds/eat.wav"
 COLLISION_SOUND = "sounds/collision.wav"
 WIN_SOUND = "sounds/win.wav"
+
+# Add background music file path
+BACKGROUND_MUSIC = "sounds/background.wav"
 
 s = Screen()
 
@@ -46,7 +50,7 @@ head.penup()
 head.goto(0, 0)
 head.direction = "stop"
 
-#skóre-výpis
+#texty
 score_print = Turtle("square")
 score_print.color("black")
 score_print.penup()
@@ -54,6 +58,14 @@ score_print.hideturtle()
 score_print.goto(0, 260)
 score_print.write(f"Skóre: {score}         nejlepší skóre: {best_score}", align="center", font=("Arial", 18))
 
+#čas
+actual_time = 0
+time_text = Turtle("square")
+time_text.color("black")
+time_text.penup()
+time_text.hideturtle()
+time_text.goto(0, 230)
+time_text.write(f"Čas: {actual_time} s", align="center", font=("Arial", 18))
 #potrava
 
 apple = Turtle("circle")
@@ -94,10 +106,53 @@ def move_right():
     if head.direction != "left":  
         head.direction = "right"
 
+# Function to play background music
+def play_background_music():
+    pygame.mixer.init()
+    pygame.mixer.music.load(BACKGROUND_MUSIC)
+    pygame.mixer.music.play(-1)
+
 # Function to trigger vibration
 def vibrate():
     pass
+def force_exit():
+    root.destroy()
+    exit()
+def collided():    
+    global continue_game
+    global score
+    global actual_time
+    global head
+    global body_parts
 
+
+    pygame.mixer.music.stop()
+    winsound.PlaySound(COLLISION_SOUND, winsound.SND_ASYNC)  # Play collision sound
+    sleep(2)
+    head.goto(0, 0)
+    head.direction = "stop"
+
+
+    # Skryjeme části těla
+    for one_body_part in body_parts:
+        one_body_part.goto(1500, 1500)
+
+    # Vyprázdníme list s částmi těla    
+    body_parts.clear()
+    score = 0
+
+    #nová pozice potravy
+    apple_new_pos()
+
+    pygame.mixer.music.play(-1)
+
+def apple_new_pos():
+    x = random.randint(-180, 180)
+    y = random.randint(-180, 180)
+    while (x, y) in [(one_body_part.xcor(), one_body_part.ycor()) for one_body_part in body_parts]:
+        x = random.randint(-180, 180)
+        y = random.randint(-180, 180)
+    apple.goto(x, y)
 #eventy
 s.listen()
 s.onkeypress(move_up, "w")
@@ -135,6 +190,9 @@ def create_joystick():
 
 create_joystick()
 
+# Start playing background music
+play_background_music()
+
 #main cyklus
 while True:
     try:
@@ -143,27 +201,11 @@ while True:
             best_score = score
         # kontrola kolize s okrajem okna
         if head.xcor() > 290 or head.xcor() < -290 or head.ycor() > 290 or head.ycor() < - 290:
-                winsound.PlaySound(COLLISION_SOUND, winsound.SND_ASYNC)  # Play collision sound
-                vibrate()
-                sleep(2)
-                head.goto(0, 0)
-                head.direction = "stop"
-
-                # Skryjeme části těla
-                for one_body_part in body_parts:
-                    one_body_part.goto(1500, 1500)
-
-                # Vyprázdníme list s částmi těla    
-                body_parts.clear()
-                if score > best_score:
-                    best_score = score
-                score = 0
+            collided()
         if head.distance(apple) < 20:
             winsound.PlaySound(EAT_SOUND, winsound.SND_ASYNC)  # Play eating sound
             vibrate()
-            x = random.randint(-180, 180) 
-            y = random.randint(-180, 180) 
-            apple.goto(x, y)
+            apple_new_pos()
             score += 1
 
             # přidání těla
@@ -194,55 +236,74 @@ while True:
         # kolize: hlava -><- tělo
         for one_body_part in body_parts:
             if one_body_part.distance(head) < 5:
-                move()
-                move()
-                sleep(2)
-                head.goto(0, 0)
-                head.direction = "stop"
+                collided()
 
-                # Skryjeme části těla
-                for one_body_part in body_parts:
-                    one_body_part.goto(1500, 1500)
-
-                # Vyprázdníme list s částmi těla    
-                body_parts.clear()
-                score = 0
-
-                #nová pozice potravy
-                x = random.randint(-280, 280)
-                y = random.randint(-280, 280)
-                apple.goto(x, y)
 
         s.title(f"AV®&FatStar a.s.  |  HÁDEK  |  skóre = {score}")
         score_print.clear()
         score_print.write(f"Skóre: {score}         nejlepší skóre: {best_score}", align="center", font=("Arial", 18))
 
+        time_text.clear()
+        time_text.write(f"Čas: {actual_time} s", align="center", font=("Arial", 18))
+
         with open("nej_skore.txt", "w", encoding="utf-8") as file:
             file.write(str(best_score))
 
         if score >= 35:
-            winsound.PlaySound(WIN_SOUND, winsound.SND_ASYNC)  # Play winning sound
-            vibrate()
-            win_text = Turtle("square")
-            win_text.speed(3)
-            win_text.color("black")
-            win_text.penup()
-            win_text.hideturtle()
-            win_text.write("VYHRÁLI JSTE!\nmaximální dosažitelné skóre je: 35 bodů :D", font=("Arial", 20))
-            head.direction = "stop"
+            continue_game = False
+            pygame.mixer.music.stop()
+            s.onkeypress(force_exit, "Escape")
+            winsound.PlaySound(WIN_SOUND, winsound.SND_ASYNC)
+            def play_again():
+                global continue_game
+                global score
+                global actual_time
+                global head
+                global body_parts
+
+                win_message.destroy()
+                score = 0
+                actual_time = 0
+                head.goto(0, 0)
+                head.direction = "stop"
+                for one_body_part in body_parts:
+                    one_body_part.goto(1500, 1500)
+                body_parts.clear()
+                apple_new_pos()
+                pygame.mixer.music.play(-1)
+                continue_game = True
+
+            win_message = tk.Toplevel(root)
+            win_message.protocol("WM_DELETE_WINDOW", lambda: None)
+            win_message.iconbitmap("icons/win.ico")
+            win_message.title("Výhra")
+            win_message.geometry("300x150+150+150") 
+            tk.Label(win_message, text=f"Vyhrál jsi!\nMaximální dosažitelné skóre: {score}", font=("Arial", 14)).pack(pady=10)
+            tk.Button(win_message, text="Hrát znovu", command=play_again).pack(pady=10)
+            win_message.transient(root)
+            win_message.grab_set()
+            root.wait_window(win_message)
         elif score > 34:
-            sleep(.00005)
+            fps = 110               
         elif score > 32:
-            sleep(.0005)
+            fps = 90
         elif score > 30:
-            sleep(.005)
+            fps = 70
         elif score > 20:
-            sleep(.03)
+            fps = 50
         elif score > 10:
-            sleep(.05)
+            fps = 30
         elif score > 5:
-            sleep(.07)
+            fps = 20
         else:
-            sleep(.1)
+            fps = 10
+        
+        #měření času
+        actual_time = round(actual_time + 1 / fps, 1)
+        
+        pygame.time.Clock().tick(fps)
     except tk.TclError:
         break
+def force_exit():
+    root.destroy()
+    exit()

@@ -42,3 +42,8 @@ def had(request):
     else:
         return render(request, 'games/error.html', {'message': 'STATIC_ROOT není nastaven.'})
     return index(request)
+
+
+
+def error(request):
+    return render(request, 'games/error.html', {'message': 'Tato stránka neexistuje.'})
