@@ -1,6 +1,6 @@
-# Hadek Python Hra
+# Hádek Python Hra
 
-Vítejte ve **Hadek Python Hře**! Tento projekt je hra v Pythonu navržená pro zábavu a učení.
+Vítejte ve **hře Hádek** od [https://github.com/Benrod133/](Benrod133)! Tato tato hra slouží pouze pro účely zábavy.
 
 ## Funkce
 
@@ -41,4 +41,4 @@ python manage.py runserver
 ```
 a poté ve vašem prohlížeči otevřete url **[http://127.0.0.1:8000/](http://127.0.0.1:8000/)**.
 
-###poté si užijte zábavu ze hry ;)
+**přeji příjemný požitek  ze hry ;)**
