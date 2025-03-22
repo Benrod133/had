@@ -30,11 +30,11 @@ Vítejte ve **hře [Hádek](https://github.com/Benrod133/had)** od **[Benrod133]
 
 ## Použití
 
-- (Pomocí terminálu) Spusťte hru pomocí následujícího příkazu:
+- _Pomocí terminálu_ Spusťte hru pomocí následujícího příkazu:
 ```bash
 python main.py
 ```
-- (GUI) spusťte django ↓
+- _Stránka s hramy_ spusťte django ↓
 ```bash
 cd www
 python manage.py runserver
