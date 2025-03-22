@@ -1,4 +1,4 @@
-# Hádek Python Hra
+# `Hádek` - _Python Hra_
 
 Vítejte ve **hře [Hádek](https://github.com/Benrod133/had)** od **[Benrod133](https://github.com/Benrod133/)**! _`Tato tato hra slouží pouze pro účel zábavy.`_
 
