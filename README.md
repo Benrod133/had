@@ -11,7 +11,7 @@ Vítejte ve **hře [Hádek](https://github.com/Benrod133/had)** od **[Benrod133]
 ## Požadavky
 
 - Python 3.8 nebo novější
-- Potřebné knihovny (nainstalujte pomocí `[requirements.txt](https://github.com/Benrod133/had/blob/main/requirements.txt)`)
+- Potřebné knihovny (nainstalujte pomocí _[requirements.txt](https://github.com/Benrod133/had/blob/main/requirements.txt)_)
 
 ## Instalace
 
