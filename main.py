@@ -165,32 +165,40 @@ s.onkeypress(move_down, "Down")
 s.onkeypress(move_left, "Left")
 s.onkeypress(move_right, "Right")
 
-# Create joystick controls for mobile
+# Funkce pro vytvoření joysticku
 def create_joystick():
+    # Nastavení pozadí obrazovky
     s.bgcolor("gold")
+    
+    # Vytvoření rámu pro joystick
     joystick_frame = tk.Frame(root, width=600, height=100, bg="lightgray")
-    joystick_frame.place(x=0, y=600)  # Adjusted y-coordinate to fit within the window
+    joystick_frame.place(x=0, y=600)  # Joystick bude vždy na pevné pozici ve spodní části okna
 
-    # Create a canvas for the round joystick
+    # Vytvoření kruhového joysticku na plátně
     joystick_canvas = tk.Canvas(joystick_frame, width=100, height=100, bg="lightgray", highlightthickness=0)
     joystick_canvas.create_oval(0, 0, 100, 100, fill='gold', outline='yellow', stipple='gray50')
     joystick_canvas.place(x=250, y=0)
 
+    # Tlačítko pro pohyb nahoru
     up_button = tk.Button(joystick_frame, text="↑", command=move_up, bg="gray", activebackground="gray")
     up_button.place(x=285, y=10, width=30, height=30)
 
+    # Tlačítko pro pohyb doleva
     left_button = tk.Button(joystick_frame, text="←", command=move_left, bg="gray", activebackground="gray")
     left_button.place(x=260, y=35, width=30, height=30)
 
+    # Tlačítko pro pohyb dolů
     down_button = tk.Button(joystick_frame, text="↓", command=move_down, bg="gray", activebackground="gray")
     down_button.place(x=285, y=60, width=30, height=30)
 
+    # Tlačítko pro pohyb doprava
     right_button = tk.Button(joystick_frame, text="→", command=move_right, bg="gray", activebackground="gray")
     right_button.place(x=310, y=35, width=30, height=30)
 
+# Vytvoření joysticku
 create_joystick()
 
-# Start playing background music
+# bg music spuštění
 play_background_music()
 
 #main cyklus
