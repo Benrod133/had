@@ -41,4 +41,4 @@ python manage.py runserver
 ```
 a poté ve vašem prohlížeči otevřete url **[http://127.0.0.1:8000/](http://127.0.0.1:8000/)**.
 
-#_**`přeji příjemný požitek  ze hry ;)`**_
+# _**`přeji příjemný požitek  ze hry ;)`**_
