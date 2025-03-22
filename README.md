@@ -1,6 +1,6 @@
 # Hádek Python Hra
 
-Vítejte ve **hře Hádek** od [https://github.com/Benrod133/](Benrod133)! Tato tato hra slouží pouze pro účely zábavy.
+Vítejte ve **hře Hádek** od **[Benrod133](https://github.com/Benrod133/)**! _Tato tato hra slouží pouze pro účel zábavy._
 
 ## Funkce
 
