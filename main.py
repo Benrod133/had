@@ -28,7 +28,7 @@ root = canvas.winfo_toplevel()
 root.iconbitmap("icons/had.ico")
 
 s.bgcolor("yellow")
-s.title(f"AV®&FatStar a.s.  |  HÁDEK  |  Skóre: {score}  |  nejlepší skóre = {best_score}")
+s.title(f"Benrod133  |  HÁDEK  |  Skóre: {score}  |  nejlepší skóre = {best_score}")
 s.setup(width=600, height=700, startx=(s.window_width() // 2), starty=(s.window_height() // 2 - 400))
 s.tracer(False)
 
