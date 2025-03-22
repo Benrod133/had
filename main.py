@@ -96,7 +96,7 @@ def move_right():
 
 # Function to trigger vibration
 def vibrate():
-    print("Vibrating...")
+    pass
 
 #eventy
 s.listen()
