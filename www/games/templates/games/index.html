@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Hry{% endblock title %}
+
+{% block content %}
+    <h1>Hry</h1>
+    <ul>
+        {% for game in games %}
+            <li>
+                <a href="{% url game.url %}">{{ game.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+
+    <link rel="stylesheet" href="{% static 'games/styles.css' %}">
+    
+{% endblock styles %}
+<link rel="stylesheet" href="{% static 'games/styles.css' %}">
+
+{% block title %}Chyba{% endblock title %}
+
+{% block content %}
+
+    <h1>Chyba</h1>
+    <p>{{message}}</p>
+    <a href="{% url 'index' %}">Zpět na seznam her</a>
+    <hr>
+    <input type="text" id="search" name="search" placeholder="Hledat hru...">
+    <a href="#"><img class="hledat" src="{% static 'games/search-icon.png' %}" alt="Hledat"></a>
+    
+{% endblock content %}
