@@ -17,7 +17,7 @@ Vítejte ve **hře [Hádek](https://github.com/Benrod133/had)** od **[Benrod133]
 
 1. Naklonujte repozitář:
     ```bash
-    git clone https://github.com/Benrod133/had.git
+    git clone https://github.com/Benrod133/had
     ```
 2. Přejděte do složky projektu:
     ```bash
