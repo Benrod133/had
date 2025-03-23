@@ -26,7 +26,8 @@ def games(request):
             {
                 'name': 'Had',
                 'url': 'had',
-                'time': time
+                'time': time,
+                'id': 'had',
             },
         ],
     })

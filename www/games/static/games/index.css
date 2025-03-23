@@ -61,6 +61,44 @@ a {
     text-align: center;
     padding: 10px;
 }
+input {
+    position: absolute;
+    top: 20px;
+    right: 200px;
+    background-color: #0000aaaa;
+    transform: scale(3);
+    border: 2px solid #dc3545aa;
+    border-radius: 5px;
+    transition: .5s;
+    outline: none;
+    color: #fff;
+    box-shadow: 1px 1px 2px #262626, 2px 2px 2px #757575, 3px 3px 2px #c0c0c0, 4px 4px 2px #ececec;
+    text-align: center;
+}
+input:is(:hover, :focus, :active) {
+    border-radius: 6px;
+}
+input:is(:active, :focus) {
+    border-color: #dc3545;
+    background-color: #0000ffaa;
+}
+
+.hledat {
+    position: absolute;
+    top: 5px;
+    right: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: .5s;
+    outline: none;
+    height: 50px;
+    width: auto;
+}.hledat:is(:hover, :focus, :active) {
+    transform: scale(1.1);
+}
+
 
 @keyframes pulze {
     0% {

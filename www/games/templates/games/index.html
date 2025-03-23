@@ -10,12 +10,23 @@
 {% block title %}Hry{% endblock title %}
 
 {% block content %}
-    <h1>Hry</h1>
+    <h1>Hry</h1>     
+    <input type="text" id="search" name="search" placeholder="Hledat hru...">
+    <a href="#" onclick="searchGame()"><img class="hledat" src="{% static 'games/search-icon.png' %}" alt="Hledat"></a>
+
     <ul>
         {% for game in games %}
-            <li>
+            <li id={{ game.id }}>
                 <a href="{% url game.url %}">{{ game.name }}<span> - Celkový odehraný čas: {{ game.time }}.</span></a>
             </li>
         {% endfor %}
     </ul>
+    <script>
+        function searchGame() {
+            const query = document.getElementById('search').value;
+            if (query) {
+                window.location.href = `/games#${encodeURIComponent(query)}`;
+            }
+        }
+    </script>
 {% endblock content %}

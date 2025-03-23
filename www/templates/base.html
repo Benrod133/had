@@ -1,9 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block favicon %}
+        <link rel="icon" type="image/png" href="{% static 'games/favicon.png' %}">
+    {% endblock favicon %}
     {% block styles %}{% endblock styles %}
     <title>{% block title %}Prázdný title...{% endblock title %}</title>
 </head>

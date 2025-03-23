@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block favicon %}
+        <link rel="icon" type="image/png" href="{% static 'games/error.png' %}">
+{% endblock favicon %}
+
 {% block styles %}
 
     <link rel="stylesheet" href="{% static 'games/error.css' %}">
@@ -20,6 +24,14 @@
     <a href="{% url 'index' %}">Zpět na seznam her</a>
     <hr>
     <input type="text" id="search" name="search" placeholder="Hledat hru...">
-    <a href="#"><img class="hledat" src="{% static 'games/search-icon.png' %}" alt="Hledat"></a>
+    <a href="#" onclick="searchGame()"><img class="hledat" src="{% static 'games/search-icon.png' %}" alt="Hledat"></a>
+    <script>
+        function searchGame() {
+            const query = document.getElementById('search').value;
+            if (query) {
+                window.location.href = `/games#${encodeURIComponent(query)}`;
+            }
+        }
+    </script>
     
 {% endblock content %}
