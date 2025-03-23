@@ -57,4 +57,5 @@ python manage.py runserver
 
 a poté ve vašem prohlížeči otevřete url **[http://127.0.0.1:8000/](http://127.0.0.1:8000/)**.
 
+---
 # _přeji příjemný požitek ze hry [Hádek](https://github.com/Benrod133/had);)_
