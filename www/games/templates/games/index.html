@@ -14,7 +14,7 @@
     <ul>
         {% for game in games %}
             <li>
-                <a href="{% url game.url %}">{{ game.name }}</a>
+                <a href="{% url game.url %}">{{ game.name }}<span> - Celkový odehraný čas: {{ game.time }}.</span></a>
             </li>
         {% endfor %}
     </ul>

@@ -10,7 +10,20 @@ try:
         content = file.read().strip()
         best_score = int(content) if content else 0
 except (FileNotFoundError, ValueError):
+    print('\033[91m\n\n[CHYBA]:\n\t Soubor "nej_skore.txt" nebyl nalezen nebo obsahuje neplatná data. \n\t Výchozí hodnota skóre byla nastavena na 0.\n\n\033[0m')
     best_score = 0
+
+try:
+    with open("celkovy_cas.txt", "r") as file:
+        content = file.read().strip()
+        celkovy_cas = float(content) if content else 0
+except (FileNotFoundError, ValueError):
+    print('\033[91m\n\n[CHYBA]:\n\t Soubor "celkovy_cas.txt" nebyl nalezen nebo obsahuje neplatná data. \n\t Výchozí hodnota času byla nastavena na 0.\n\n\033[0m')
+    celkovy_cas = 0
+    with open("celkovy_cas.txt", "w") as file:
+        file.write("0")
+
+
 score = 0
 
 # Add sound file paths
@@ -256,13 +269,15 @@ while True:
 
         #měření času
         actual_time += 1 / fps  # Přesná akumulace času
-
+        celkovy_cas += 1 / fps  # Přesná akumulace času
         # Zobrazení času zaokrouhleného na 1 desetinné místo
         time_text.clear()
         time_text.write(f"Čas: {round(actual_time, 1)} s", align="center", font=("Arial", 18))
 
         with open("nej_skore.txt", "w", encoding="utf-8") as file:
             file.write(str(best_score))
+        with open("celkovy_cas.txt", "w", encoding="utf-8") as file:
+            file.write(str(celkovy_cas))
 
         if score >= 35:
             continue_game = False

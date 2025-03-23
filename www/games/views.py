@@ -10,11 +10,23 @@ import logging
 def index(request):
     return redirect(reverse(games))
 def games(request):
+    time_url = os.path.join(settings.BASE_DIR, '..', 'celkovy_cas.txt')
+    with open(time_url, "r") as file:
+        content = file.read().strip()
+        time = float(content) if content else 0
+    
+    #převedení na hodiny:minuty(počítáno z sekund)
+    hodiny = int(time // 3600)
+    minuty = int((time % 3600) // 60)
+    sekundy = int(time % 60)
+    time = f"{hodiny} hod {minuty} min {sekundy} sec"
+
     return render(request, 'games/index.html', {
         'games': [
             {
                 'name': 'Had',
                 'url': 'had',
+                'time': time
             },
         ],
     })

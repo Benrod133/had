@@ -43,6 +43,15 @@ li {
 ul li:nth-child(n) {
     --index: n;
 }
+ul li span {
+    position: relative;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+}
 
 a {
     display: block;
