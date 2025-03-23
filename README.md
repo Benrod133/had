@@ -59,3 +59,5 @@ a poté ve vašem prohlížeči otevřete url **[http://127.0.0.1:8000/](http://
 
 ---
 # _přeji příjemný požitek ze hry [Hádek](https://github.com/Benrod133/had);)_
+
+_pokud máte nějaké další dotazy, neváhejte nám napsat na email: [alextrefny.cz@gail.com](mailto:alextrefny.cz@gail.com)_
