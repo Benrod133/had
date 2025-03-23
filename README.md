@@ -39,6 +39,22 @@ python main.py
 cd www
 python manage.py runserver
 ```
+
+## Chyby
+- Pokud soubor `celkovy_cas.txt` chybí nebo obsahuje neplatná data, vytvořte jej ručně ve složce projektu a zadejte výchozí hodnotu `0`. Alternativně, upravte kód tak, aby soubor automaticky vytvořil:
+    ```python
+    try:
+        with open("celkovy_cas.txt", "r") as file:
+            cas = int(file.read().strip())
+    except (FileNotFoundError, ValueError):
+        cas = 0
+        with open("celkovy_cas.txt", "w") as file:
+            file.write("0")
+    ```
+- Pokud chybí nějaké další soubory, upravte to stejně ;)
+  
+  
+
 a poté ve vašem prohlížeči otevřete url **[http://127.0.0.1:8000/](http://127.0.0.1:8000/)**.
 
 # _přeji příjemný požitek ze hry [Hádek](https://github.com/Benrod133/had);)_
