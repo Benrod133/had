@@ -339,7 +339,10 @@ while True:
             win_message.iconbitmap("icons/win.ico")
             win_message.title("Výhra")
             win_message.geometry("300x150+150+150") 
-            tk.Label(win_message, text=f"Vyhrál jsi!\nMaximální dosažitelné skóre: {score}", font=("Arial", 14)).pack(pady=10)
+            if actual_time < best_time or best_time == 0.0:
+                tk.Label(win_message, text=f"Vyhrál jsi!\nMaximální dosažitelné skóre: {score} \nNový nejlepší čas: {round(actual_time, 1)} s", font=("Arial", 14)).pack(pady=10)
+            else:
+                tk.Label(win_message, text=f"Vyhrál jsi!\nMaximální dosažitelné skóre: {score} \n(Nejlepší čas zůstává: {round(best_time, 1)} s)", font=("Arial", 14)).pack(pady=10)
             tk.Button(win_message, text="Hrát znovu", command=play_again).pack(pady=10)
             win_message.transient(root)
             win_message.grab_set()
