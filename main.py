@@ -22,7 +22,17 @@ except (FileNotFoundError, ValueError):
     celkovy_cas = 0
     with open("celkovy_cas.txt", "w") as file:
         file.write("0")
+try:
+    with open("nej_cas.txt", "r") as file:
+        content = file.read().strip()
+        best_time = float(content) if content else 0
+        best_time = round(best_time, 1)
 
+except (FileNotFoundError, ValueError):
+    print('\033[91m\n\n[CHYBA]:\n\t Soubor "nej_cas.txt" nebyl nalezen nebo obsahuje neplatná data. \n\t Výchozí hodnota času byla nastavena na 0.\n\n\033[0m')
+    best_time = 0.0
+    with open("nej_cas.txt", "w") as file:
+        file.write("0")
 
 score = 0
 
@@ -70,6 +80,13 @@ score_print.penup()
 score_print.hideturtle()
 score_print.goto(0, 260)
 score_print.write(f"Skóre: {score}         nejlepší skóre: {best_score}", align="center", font=("Arial", 18))
+
+nej_cas = Turtle("square")
+nej_cas.color("black")
+nej_cas.penup()
+nej_cas.hideturtle()
+nej_cas.goto(0, 200)
+nej_cas.write(f"Nejlepší čas: {best_time} s", align="center", font=("Arial", 18))
 
 #čas
 actual_time = 0
@@ -266,6 +283,10 @@ while True:
         s.title(f"AV®&FatStar a.s.  |  HÁDEK  |  skóre = {score}")
         score_print.clear()
         score_print.write(f"Skóre: {score}         nejlepší skóre: {best_score}", align="center", font=("Arial", 18))
+        #zaokrouhlení nej času na 1 desetinné místo
+        best_time = round(best_time, 1)
+        nej_cas.clear()
+        nej_cas.write(f"Nejlepší čas: {best_time} s", align="center", font=("Arial", 18))
 
         #měření času
         actual_time += 1 / fps  # Přesná akumulace času
@@ -281,19 +302,29 @@ while True:
 
         if score >= 35:
             continue_game = False
+            if actual_time < best_time or best_time == 0.0:
+                with open("nej_cas.txt", "w", encoding="utf-8") as file:
+                    file.write(str(actual_time))
             pygame.mixer.music.stop()
             s.onkeypress(force_exit, "Escape")
             winsound.PlaySound(WIN_SOUND, winsound.SND_ASYNC)
             def play_again():
                 global continue_game
+                global best_time
                 global score
                 global actual_time
                 global head
                 global body_parts
 
+
                 win_message.destroy()
                 score = 0
                 actual_time = 0  # Reset času
+                with open("nej_cas.txt", "r", encoding="utf-8") as file:
+                    content = file.read().strip()
+                    best_time = float(content) if content else 0
+
+                
                 head.goto(0, 0)
                 head.direction = "stop"
                 for one_body_part in body_parts:
