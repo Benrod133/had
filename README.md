@@ -29,16 +29,26 @@ Vítejte ve **hře [Hádek](https://github.com/Benrod133/had)** od **[Benrod133]
     ```
 
 ## Použití
-
-- _Pomocí terminálu_ Spusťte hru pomocí následujícího příkazu:
-```bash
-python main.py
-```
-- _Stránka s hramy_ spusťte django ↓
-```bash
-cd www
-python manage.py runserver
-```
+1.  Soubory _[celkovy_cas.txt](celkovy_cas.txt)_ a _[nej_skore.txt](nej_skore.txt)_ změňte na hodnotu **0**(aktuální hodnota je již odehraná hra)  
+    - _(Pomocí terminálu)_ Spusťte příkaz:
+          ```bash
+          echo 0 > nej_skore.txt
+          echo 0 > celkovy_cas.txt
+          ```
+    - _(Pomocí průzkumníka souborů)_ Otevřete postupně soubory _[celkovy_cas.txt](celkovy_cas.txt)_ a _[nej_skore.txt](nej_skore.txt)_ a jejich hodnotu nastavte na
+        ```txt
+        0
+        ```
+2.  - _(Pomocí terminálu)_ Spusťte hru pomocí následujícího příkazu:
+        ```bash
+        python main.py
+        ```
+    - _(Stránka s hramy)_ spusťte django ↓
+        ```bash
+        cd www
+        python manage.py runserver
+        ```
+        a poté ve vašem prohlížeči otevřete url **[http://127.0.0.1:8000/](http://127.0.0.1:8000/)**.
 
 ## Chyby
 - Pokud soubor `celkovy_cas.txt` chybí nebo obsahuje neplatná data, vytvořte jej ručně ve složce projektu a zadejte výchozí hodnotu `0`. Alternativně, upravte kód tak, aby soubor automaticky vytvořil:
@@ -53,11 +63,7 @@ python manage.py runserver
     ```
 - Pokud chybí nějaké další soubory, upravte to stejně ;)
   
-  
-
-a poté ve vašem prohlížeči otevřete url **[http://127.0.0.1:8000/](http://127.0.0.1:8000/)**.
-
 ---
 # _přeji příjemný požitek ze hry [Hádek](https://github.com/Benrod133/had);)_
 
-_pokud máte nějaké další dotazy, neváhejte nám napsat na email: [alextrefny.cz@gail.com](mailto:alextrefny.cz@gail.com)_
+_pokud máte nějaké další dotazy, neváhejte nám napsat na email: [alextrefny.cz@gmail.com](mailto:alextrefny.cz@mgail.com)_
