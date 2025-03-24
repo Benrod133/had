@@ -78,14 +78,14 @@ score_print = Turtle("square")
 score_print.color("black")
 score_print.penup()
 score_print.hideturtle()
-score_print.goto(0, 260)
+score_print.goto(0, 270)
 score_print.write(f"Skóre: {score}         nejlepší skóre: {best_score}", align="center", font=("Arial", 18))
 
 nej_cas = Turtle("square")
 nej_cas.color("black")
 nej_cas.penup()
 nej_cas.hideturtle()
-nej_cas.goto(0, 200)
+nej_cas.goto(0, 230)
 nej_cas.write(f"Nejlepší čas: {best_time} s", align="center", font=("Arial", 18))
 
 #čas
@@ -94,7 +94,7 @@ time_text = Turtle("square")
 time_text.color("black")
 time_text.penup()
 time_text.hideturtle()
-time_text.goto(0, 230)
+time_text.goto(0, 250)
 time_text.write(f"Čas: {actual_time} s", align="center", font=("Arial", 18))
 #potrava
 
