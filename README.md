@@ -49,6 +49,11 @@ Vítejte ve **hře [Hádek](https://github.com/Benrod133/had)** od **[Benrod133]
         python manage.py runserver
         ```
         a poté ve vašem prohlížeči otevřete url **[http://127.0.0.1:8000/](http://127.0.0.1:8000/)**.
+    - _(Pokud počítač nemá nainstalovaný Python)_ Nainstalujte [Python](https://www.python.org), nebo spusťte (main.exe)[main.exe]
+        - Instalace Pythonu:
+              - Klikni >>[SEM](https://www.python.org/ftp/python/3.13.2/python-3.13.2-amd64.exe)<< pro instalaci [Python](https://www.python.org)u
+              - V prohlížeči vyhledejte "(install python)[https://www.google.com/search?client=opera&q=install+python&sourceid=opera&ie=UTF-8&oe=UTF-8]" a poté klikněte na 1. odkaz. zde naleznete instalaci [Python](https://www.python.org)u
+        - _(Spusťte main.exe)_ Ve Vašem Windowsu spusťte soubor (main.exe)[main.exe] z [tohoto projektu](https://github.com/Benrod133/had).
 
 ## Chyby
 - Pokud soubor `celkovy_cas.txt` chybí nebo obsahuje neplatná data, vytvořte jej ručně ve složce projektu a zadejte výchozí hodnotu `0`. Alternativně, upravte kód tak, aby soubor automaticky vytvořil:
