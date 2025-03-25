@@ -64,7 +64,7 @@ Vítejte ve **hře [Hádek](https://github.com/Benrod133/had)** od **[Benrod133]
 - Pokud chybí nějaké další soubory, upravte to stejně ;)
 
 # Django
-Tento kód je napsán kompletně v jazyce [Python](python) s _jedinou víjjímkou_ a to v [Djangu](django)
+Tento kód je napsán kompletně v jazyce [Python](https://www.python.org) s _jedinou vijjímkou_ a to v [Djangu](https://www.djangoproject.com)
 ---
 # _přeji příjemný požitek ze hry [Hádek](https://github.com/Benrod133/had);)_
 
