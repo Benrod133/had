@@ -5,7 +5,7 @@ Vítejte ve **hře [Hádek](https://github.com/Benrod133/had)** od **[Benrod133]
 ## Funkce
 
 - Zábavná herní mechanika.
-- Napsáno kompletně v Pythonu.
+- Napsáno kompletně v Pythonu. **[*](#django)**  
 - Snadno přizpůsobitelné a rozšiřitelné.
 
 ## Požadavky
@@ -62,7 +62,9 @@ Vítejte ve **hře [Hádek](https://github.com/Benrod133/had)** od **[Benrod133]
             file.write("0")
     ```
 - Pokud chybí nějaké další soubory, upravte to stejně ;)
-  
+
+# Django
+Tento kód je napsán kompletně v jazyce [Python](python) s _jedinou víjjímkou_ a to v [Djangu](django)
 ---
 # _přeji příjemný požitek ze hry [Hádek](https://github.com/Benrod133/had);)_
 
